@@ -5,66 +5,65 @@
  */
 package autores.modelos;
 
+import java.util.Objects;
+
 /**
  *
  * @author Otros
  */
-public class Alumno {
-    private int dni;
-    private String apellidos;
-    private String nombres;
-    private String clave;
+public class Alumno extends Autor{
     private String cx;
     
     public Alumno(int dni,String apellidos,String nombres,String clave,String cx) {
-        this.dni = dni;
-        this.apellidos = apellidos;
-        this.nombres = nombres;
-        this.clave = clave;
+        super(dni,apellidos,nombres,clave);
         this.cx = cx;
     }
     
+    @Override
     public void mostrar(){
-        System.out.println("Apellidos y nombres: " + apellidos + ", " + nombres + "\n DNI: " + dni + "\n Clave: " + clave + "\n CX: " + cx);
-    }
-    
-    public void asignarDni(int dni){
-        this.dni = dni;
-    }
-    
-    public void asignarApellidos(String apellidos){
-        this.apellidos = apellidos;
-    }
-    
-    public void asignarNombres(String nombres){
-        this.nombres = nombres;
-    }
-    
-    public void asignarClave(String clave){
-        this.clave = clave;
+        System.out.println("Apellidos y nombres: " + super.verApellidos() + ", " + super.verNombres() + "\n DNI: " + super.verDni() + "\n Clave: " + super.verClave() + "\n CX: " + cx);
     }
     
     public void asignarCx(String cx){
         this.cx = cx;
     }
     
-    public int verDni(){
-        return dni;
-    }
-    
-    public String verNombres(){
-        return nombres;
-    }
-    
-    public String verApellidos(){
-        return apellidos;
-    }
-    
-    public String verClave(){
-        return clave;
-    }
-    
     public String verCx(){
         return cx;
     }
+    
+    @Override
+    public int verDni(){
+        return super.verDni();
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 53 * hash + Objects.hashCode(this.cx);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(super.equals(obj)){
+            return true;
+        }
+        else{
+           if (this == obj) {
+            return true;
+            }
+            if (obj == null) {
+                return false;
+            }
+            if (getClass() != obj.getClass()) {
+                return false;
+            }
+            final Alumno other = (Alumno) obj;
+            if (!Objects.equals(this.cx, other.cx)) {
+                return false;
+            }
+            return true; 
+        }        
+    }    
 }

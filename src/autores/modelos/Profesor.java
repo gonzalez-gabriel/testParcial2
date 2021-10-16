@@ -9,62 +9,24 @@ package autores.modelos;
  *
  * @author Otros
  */
-public class Profesor {
-    private int dni;
-    private String apellidos;
-    private String nombres;
-    private String clave;
+public class Profesor extends Autor{
     private Cargo cargo;
     
     public Profesor(int dni,String apellidos,String nombres,String clave,Cargo cargo) {
-        this.dni = dni;
-        this.apellidos = apellidos;
-        this.nombres = nombres;
-        this.clave = clave;
+        super(dni,apellidos,nombres,clave);
         this.cargo = cargo;
     }
     
+    @Override
     public void mostrar(){
-        System.out.println("Apellidos y nombres: " + apellidos + ", " + nombres + "\n DNI: " + dni + "\n Clave: " + clave + "\n Cargo: " + cargo);
-    }
-    
-    public void asignarDni(int dni){
-        this.dni = dni;
-    }
-    
-    public void asignarApellidos(String apellidos){
-        this.apellidos = apellidos;
-    }
-    
-    public void asignarNombres(String nombres){
-        this.nombres = nombres;
-    }
-    
-    public void asignarClave(String clave){
-        this.clave = clave;
+        System.out.println("Apellidos y nombres: " + super.verApellidos() + ", " + super.verNombres() + "\n DNI: " + super.verDni() + "\n Clave: " + super.verClave() + "\n CX: " + cargo);
     }
     
     public void asignarCargo(Cargo cargo){
         this.cargo = cargo;
     }
     
-    public int verDni(){
-        return dni;
-    }
-    
-    public String verNombres(){
-        return nombres;
-    }
-    
-    public String verApellidos(){
-        return apellidos;
-    }
-    
-    public String verClave(){
-        return clave;
-    }
-    
     public Cargo verCargo(){
         return cargo;
-    }
+    }    
 }
