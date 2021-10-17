@@ -7,6 +7,7 @@ package grupos.modelos;
 
 import autores.modelos.Profesor;
 import autores.modelos.Alumno;
+import autores.modelos.Autor;
 import java.util.Objects;
 
 /**
@@ -16,8 +17,15 @@ import java.util.Objects;
 public class MiembroEnGrupo {
     private Profesor profesor;
     private Alumno alumno;
+    private Autor autor;
     private Grupo grupo;
     private Rol rol;
+    
+    public MiembroEnGrupo(Autor autor, Grupo grupo, Rol rol){
+        this.autor = autor;
+        this.grupo = grupo;
+        this.rol = rol;
+    }
     
     public MiembroEnGrupo(Profesor profesor, Grupo grupo, Rol rol){
         this.profesor = profesor;
@@ -30,6 +38,15 @@ public class MiembroEnGrupo {
         this.grupo = grupo;
         this.rol = rol;
     }
+
+    public Autor verAutor() {
+        return autor;
+    }
+
+    public void asignarAutor(Autor autor) {
+        this.autor = autor;
+    }
+    
     
     public void asignarProfesor(Profesor profesor){
         this.profesor = profesor;

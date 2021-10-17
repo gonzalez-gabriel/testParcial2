@@ -17,6 +17,8 @@ public class Grupo {
     private String nombre;
     private String descripcion;
     private ArrayList<MiembroEnGrupo> miembroEnGrupo;
+    private boolean superAdministradores = false;
+    private boolean hayMiembros = false;
     
     public Grupo(String nombre, String descripcion) {
         this.nombre = nombre;
@@ -25,6 +27,8 @@ public class Grupo {
     
     public void mostrar(){
         System.out.println("Nombre del grupo: " + nombre + "\t Descripción: " + descripcion);
+        for(MiembroEnGrupo m : miembroEnGrupo)
+            System.out.println("Nombre del miembro: " + m.verAutor().verApellidos()+", "+m.verAutor().verNombres()  + "\t Rol: " + m.verRol());
     }
     
     public void asignarNombre(String nombre){
@@ -47,9 +51,37 @@ public class Grupo {
         return miembroEnGrupo;
     }
 
-//    public void agregarMiembro(Autor autor, Rol rol){
-//        miembroEnGrupo.add(autor,rol);
-//    }
+    public void agregarMiembro(Autor autor, Rol rol){
+        MiembroEnGrupo miembro = new MiembroEnGrupo(autor,this,rol);
+        if(!miembroEnGrupo.contains(miembro)){
+            this.hayMiembros = true;
+            miembroEnGrupo.add(miembro);
+        }
+    }
+    
+    public void quitarMiembro(Autor autor){
+        miembroEnGrupo.remove(autor);
+        if(miembroEnGrupo.isEmpty()){
+            this.hayMiembros = false;
+        }
+    }
+    
+    public boolean esSuperAdministradores(){
+        for(MiembroEnGrupo m : miembroEnGrupo)
+            if(m.verRol() != Rol.ADMINISTRADOR){
+                return false;
+            }
+        return true;
+    }
+    
+    public boolean tieneMiembros(){
+        if(hayMiembros){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
     
     @Override
     public int hashCode() {
