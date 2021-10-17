@@ -115,20 +115,20 @@ public class Publicacion {
     }
     
     public void mostrar(){
-        System.out.println("Título: " + titulo);
-        System.out.println("Autor: " + miembroEnGrupo.verProfesor().verApellidos() + ", " + miembroEnGrupo.verProfesor().verNombres());
-        System.out.println("Grupo: " + miembroEnGrupo.verGrupo().verNombre());
-        System.out.println("Rol: " + miembroEnGrupo.verRol());
-        System.out.println("Fecha de publicación: " + fechaPublicacion);
-        System.out.println("Tipo: " + tipo);
-        System.out.println("Idioma: " + idioma);
-        System.out.println("Lugar: " + lugar);
+        System.out.println("Título: " + this.titulo);
+        System.out.println("Autor: " + this.miembroEnGrupo.verAutor().verApellidos() + ", " + this.miembroEnGrupo.verAutor().verNombres());
+        System.out.println("Grupo: " + this.miembroEnGrupo.verGrupo().verNombre());
+        System.out.println("Rol: " + this.miembroEnGrupo.verRol());
+        System.out.println("Fecha de publicación: " + this.fechaPublicacion);
+        System.out.println("Tipo: " + this.tipo);
+        System.out.println("Idioma: " + this.idioma);
+        System.out.println("Lugar: " + this.lugar);
         System.out.println("Palabras claves");
         System.out.println("---------------");
-        for(PalabraClave pc : palabrasClave)
+        for(PalabraClave pc : this.palabrasClave)
             System.out.println("\t" + pc);
-        System.out.println("Enlace: " + enlace);
-        System.out.println("Resumen: " + resumen);
+        System.out.println("Enlace: " + this.enlace);
+        System.out.println("Resumen: " + this.resumen);
         
     }
 

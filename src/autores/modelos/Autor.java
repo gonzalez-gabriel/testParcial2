@@ -5,6 +5,11 @@
  */
 package autores.modelos;
 
+import grupos.modelos.Grupo;
+import grupos.modelos.MiembroEnGrupo;
+import grupos.modelos.Rol;
+import java.util.ArrayList;
+
 /**
  *
  * @author Otros
@@ -14,12 +19,14 @@ public abstract class Autor {
     private String apellidos;
     private String nombres;
     private String clave;
+    private ArrayList<MiembroEnGrupo> miembroEnGrupo;
     
     public Autor(int dni,String apellidos,String nombres,String clave) {
         this.dni = dni;
         this.apellidos = apellidos;
         this.nombres = nombres;
         this.clave = clave;
+        this.miembroEnGrupo = new ArrayList<>();
     }
     
     public void asignarDni(int dni){
@@ -56,8 +63,41 @@ public abstract class Autor {
     
     public void mostrar(){
         System.out.println("["+dni+"] "+apellidos+", "+nombres+".");
+        if(!this.miembroEnGrupo.isEmpty()){
+            System.out.println("Miembro de grupo: ");
+            for(MiembroEnGrupo m : this.miembroEnGrupo)
+                System.out.println("Nombre de grupo: "+m.verGrupo().verNombre()+"\tRol: "+m.verRol()+".");
+        }
     }
 
+    public ArrayList<MiembroEnGrupo> verGrupos(){
+        return miembroEnGrupo;
+    }
+    
+    public void agregarGrupo(Grupo grupo,Rol rol){
+        MiembroEnGrupo miembro = new MiembroEnGrupo(this,grupo,rol);
+        if(!this.miembroEnGrupo.contains(miembro)){
+            this.miembroEnGrupo.add(miembro);
+            grupo.agregarMiembro(this, rol);
+        }
+    }
+    
+    public void quitarGrupo(Grupo grupo){
+        MiembroEnGrupo miembro = new MiembroEnGrupo(this,grupo,null);
+        if(this.miembroEnGrupo.contains(miembro)){
+            this.miembroEnGrupo.remove(miembro);
+            grupo.quitarMiembro(this);
+        }
+    }
+    
+    public boolean esSuperAdministrador(){
+        for(MiembroEnGrupo m: miembroEnGrupo){
+            if(m.verGrupo().esSuperAdministradores())
+                return true;
+        }
+        return false;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 7;
