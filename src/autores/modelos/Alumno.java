@@ -21,7 +21,8 @@ public class Alumno extends Autor{
     
     @Override
     public void mostrar(){
-        System.out.println("Apellidos y nombres: " + super.verApellidos() + ", " + super.verNombres() + "\n DNI: " + super.verDni() + "\n Clave: " + super.verClave() + "\n CX: " + cx);
+        System.out.print("\nCX: " + cx + " ");
+        super.mostrar();       
     }
     
     public void asignarCx(String cx){

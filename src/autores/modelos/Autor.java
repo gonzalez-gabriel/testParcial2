@@ -62,9 +62,9 @@ public abstract class Autor {
     }
     
     public void mostrar(){
-        System.out.println("["+dni+"] "+apellidos+", "+nombres+".");
+        System.out.print("[DNI: "+dni+"] "+apellidos+", "+nombres+".");
         if(!this.miembroEnGrupo.isEmpty()){
-            System.out.println("Miembro de grupo: ");
+            System.out.println(" Es miembro del grupo: ");
             for(MiembroEnGrupo m : this.miembroEnGrupo)
                 System.out.println("Nombre de grupo: "+m.verGrupo().verNombre()+"\tRol: "+m.verRol()+".");
         }

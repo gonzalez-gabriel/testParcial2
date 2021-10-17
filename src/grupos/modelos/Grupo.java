@@ -25,11 +25,11 @@ public class Grupo {
     }
     
     public void mostrar(){
-        System.out.println("Nombre del grupo: " + this.nombre + "\t Descripción: " + this.descripcion);
+        System.out.println("\n\n\tGRUPO: " + this.nombre + "\t DESCRIPCION: " + this.descripcion);
         if(this.tieneMiembros()){
-            System.out.println("Miembros en el grupo: ");
+            System.out.println("\t___MIEMBROS EN EL GRUPO___ ");
             for(MiembroEnGrupo m : this.miembroEnGrupo)
-                System.out.println("Nombre: "+m.verAutor().verApellidos()+", "+m.verAutor().verNombres()+"\t Rol"+m.verRol());
+                System.out.println("Nombre: "+m.verAutor().verApellidos()+", "+m.verAutor().verNombres()+"\t Rol: "+m.verRol());
         }
     }
     

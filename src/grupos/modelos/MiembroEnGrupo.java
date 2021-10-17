@@ -15,26 +15,12 @@ import java.util.Objects;
  * @author Otros
  */
 public class MiembroEnGrupo {
-    private Profesor profesor;
-    private Alumno alumno;
     private Autor autor;
     private Grupo grupo;
     private Rol rol;
     
     public MiembroEnGrupo(Autor autor, Grupo grupo, Rol rol){
         this.autor = autor;
-        this.grupo = grupo;
-        this.rol = rol;
-    }
-    
-    public MiembroEnGrupo(Profesor profesor, Grupo grupo, Rol rol){
-        this.profesor = profesor;
-        this.grupo = grupo;
-        this.rol = rol;
-    }
-    
-    public MiembroEnGrupo(Alumno alumno, Grupo grupo, Rol rol){
-        this.alumno = alumno;
         this.grupo = grupo;
         this.rol = rol;
     }
@@ -45,16 +31,7 @@ public class MiembroEnGrupo {
 
     public void asignarAutor(Autor autor) {
         this.autor = autor;
-    }
-    
-    
-    public void asignarProfesor(Profesor profesor){
-        this.profesor = profesor;
-    }
-    
-    public void asignarAlumno(Alumno alumno){
-        this.alumno = alumno;
-    }
+    } 
     
     public void asignarGrupo(Grupo grupo){
         this.grupo = grupo;
@@ -62,14 +39,6 @@ public class MiembroEnGrupo {
     
     public void asignarRol(Rol rol){
         this.rol = rol;
-    }
-    
-    public Profesor verProfesor(){
-        return profesor;
-    }
-    
-    public Alumno verAlumno(){
-        return alumno;
     }
     
     public Grupo verGrupo(){
@@ -83,8 +52,8 @@ public class MiembroEnGrupo {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 89 * hash + Objects.hashCode(this.profesor);
-        hash = 89 * hash + Objects.hashCode(this.alumno);
+        hash = 89 * hash + Objects.hashCode(this.autor);
+        hash = 89 * hash + Objects.hashCode(this.grupo);
         return hash;
     }
 
@@ -100,10 +69,10 @@ public class MiembroEnGrupo {
             return false;
         }
         final MiembroEnGrupo other = (MiembroEnGrupo) obj;
-        if (!Objects.equals(this.profesor, other.profesor)) {
+        if (!Objects.equals(this.autor, other.autor)) {
             return false;
         }
-        if (!Objects.equals(this.alumno, other.alumno)) {
+        if (!Objects.equals(this.grupo, other.grupo)) {
             return false;
         }
         return true;
