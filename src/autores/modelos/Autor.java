@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Otros
+ * @author Ocón Santiago Luis
  */
 public abstract class Autor {
     private int dni;

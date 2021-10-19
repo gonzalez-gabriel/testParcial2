@@ -17,7 +17,7 @@ import tipos.modelos.Tipo;
 
 /**
  *
- * @author Otros
+ * @author Ocón Santiago Luis
  */
 public class Publicacion {
     private String titulo;

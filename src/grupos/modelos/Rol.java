@@ -7,7 +7,7 @@ package grupos.modelos;
 
 /**
  *
- * @author Otros
+ * @author Ocón Santiago Luis
  */
 public enum Rol {
     ADMINISTRADOR,

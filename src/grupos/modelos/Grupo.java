@@ -11,7 +11,7 @@ import java.util.Objects;
 
 /**
  *
- * @author Otros
+ * @author Ocón Santiago Luis
  */
 public class Grupo {
     private String nombre;
@@ -25,9 +25,9 @@ public class Grupo {
     }
     
     public void mostrar(){
-        System.out.println("\n\n\tGRUPO: " + this.nombre + "\t DESCRIPCION: " + this.descripcion);
+        System.out.print("\nGRUPO: " + this.nombre + "\t\tDESCRIPCION: " + this.descripcion);
         if(this.tieneMiembros()){
-            System.out.println("\t___MIEMBROS EN EL GRUPO___ ");
+            System.out.println("\n\t___MIEMBROS EN EL GRUPO___ ");
             for(MiembroEnGrupo m : this.miembroEnGrupo)
                 System.out.println("Nombre: "+m.verAutor().verApellidos()+", "+m.verAutor().verNombres()+"\t Rol: "+m.verRol());
         }
@@ -82,7 +82,9 @@ public class Grupo {
         if(this.miembroEnGrupo.isEmpty()){
             return false;
         }
-        return true;
+        else{            
+            return true;
+        }
     }
     
     @Override

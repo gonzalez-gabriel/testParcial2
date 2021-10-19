@@ -7,7 +7,7 @@ package autores.modelos;
 
 /**
  *
- * @author Otros
+ * @author Ocón Santiago Luis
  */
 public class Profesor extends Autor{
     private Cargo cargo;

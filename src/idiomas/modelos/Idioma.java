@@ -9,7 +9,7 @@ import java.util.Objects;
 
 /**
  *
- * @author Otros
+ * @author Ocón Santiago Luis
  */
 public class Idioma {
     private String nombre;

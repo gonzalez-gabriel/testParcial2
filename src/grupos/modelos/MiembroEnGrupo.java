@@ -5,14 +5,12 @@
  */
 package grupos.modelos;
 
-import autores.modelos.Profesor;
-import autores.modelos.Alumno;
 import autores.modelos.Autor;
 import java.util.Objects;
 
 /**
  *
- * @author Otros
+ * @author Ocón Santiago Luis
  */
 public class MiembroEnGrupo {
     private Autor autor;

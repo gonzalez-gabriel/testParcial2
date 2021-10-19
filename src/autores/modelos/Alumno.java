@@ -9,7 +9,7 @@ import java.util.Objects;
 
 /**
  *
- * @author Otros
+ * @author Ocón Santiago Luis
  */
 public class Alumno extends Autor{
     private String cx;
@@ -34,14 +34,9 @@ public class Alumno extends Autor{
     }
     
     @Override
-    public int verDni(){
-        return super.verDni();
-    }
-
-    @Override
-    public int hashCode() {
+    public int hashCode() {        
         int hash = 5;
-        hash = 53 * hash + Objects.hashCode(this.cx);
+        hash = super.hashCode() + Objects.hashCode(this.cx);
         return hash;
     }
 
@@ -51,8 +46,8 @@ public class Alumno extends Autor{
             return true;
         }
         else{
-           if (this == obj) {
-            return true;
+            if (this == obj) {
+                return true;
             }
             if (obj == null) {
                 return false;

@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Objects;
 /**
  *
- * @author Otros
+ * @author Ocón Santiago Luis
  */
 public class PalabraClave {
     private String nombre;
