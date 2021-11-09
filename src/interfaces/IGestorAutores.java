@@ -28,8 +28,8 @@ public interface IGestorAutores {
     
     public String nuevoAutor(int dni, String apellidos, String nombres, Cargo cargo, String clave, String claveRepetida);
     public String nuevoAutor(int dni, String apellidos, String nombres, String cx, String clave, String claveRepetida);
-    public String modificarAutor(Autor autor, String apellidos, String nombre, Cargo cargo, String clave, String claveRepetida);
-    public String modificarAutor(Autor autor, String apellidos, String nombre, String cx, String clave, String claveRepetida);
+    public String modificarAutor(Autor autor, String apellidos, String nombres, Cargo cargo, String clave, String claveRepetida);
+    public String modificarAutor(Autor autor, String apellidos, String nombres, String cx, String clave, String claveRepetida);
     public boolean existeEsteAutor(Autor autor);
     public ArrayList<Autor> verAutores();
     public ArrayList<Profesor> verProfesores();

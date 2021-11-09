@@ -28,8 +28,8 @@ public interface IGestorPublicaciones {
     public static final String MSJ_MOD_BLANCO = "Modificación ingresada en blanco.";
     public static final String MSJ_MOD_SINPUBLICACION = "No existe esta publicación."; 
     
-    public String nuevaPublicacion(String titulo, MiembroEnGrupo miembroEnGrupo, LocalDate fechaPublicacion, Tipo tipo, Idioma idioma, Lugar lugar, ArrayList<PalabraClave> palabrasClaves, String Enlace, String resumen);
-    public String modificarPublicacion(String titulo, MiembroEnGrupo miembroEnGrupo, LocalDate fechaPublicacion, Tipo tipo, Idioma idioma, Lugar lugar, ArrayList<PalabraClave> palabrasClaves, String Enlace, String resumen);
+    public String nuevaPublicacion(String titulo, MiembroEnGrupo miembroEnGrupo, LocalDate fechaPublicacion, Tipo tipo, Idioma idioma, Lugar lugar, ArrayList<PalabraClave> palabrasClaves, String enlace, String resumen);
+    public String modificarPublicacion(Publicacion publicacion, MiembroEnGrupo miembroEnGrupo, LocalDate fechaPublicacion, Tipo tipo, Idioma idioma, Lugar lugar, ArrayList<PalabraClave> palabrasClaves, String enlace, String resumen);
     public boolean hayPublicacionesConEstaPalabraClave(PalabraClave palabraClave);
     public boolean hayPublicacionesConEsteLugar(Lugar lugar);
     public boolean hayPublicacionesConEsteTipo(Tipo tipo);
