@@ -86,4 +86,9 @@ public class GestorGrupos implements IGestorGrupos{
         else
             return false;
     }
+    
+    public void mostrarGrupos(ArrayList<Grupo> grupos){
+        for(Grupo g: grupos)
+            g.mostrar();
+    }
 }

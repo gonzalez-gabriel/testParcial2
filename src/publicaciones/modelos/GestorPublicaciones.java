@@ -12,6 +12,7 @@ import interfaces.IGestorPublicaciones;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 import lugares.modelos.Lugar;
 import palabrasclaves.modelos.PalabraClave;
 import tipos.modelos.Tipo;
@@ -36,7 +37,7 @@ public class GestorPublicaciones implements IGestorPublicaciones{
     }
 
     @Override
-    public String nuevaPublicacion(String titulo, MiembroEnGrupo miembroEnGrupo, LocalDate fechaPublicacion, Tipo tipo, Idioma idioma, Lugar lugar, ArrayList<PalabraClave> palabrasClaves, String enlace, String resumen){
+    public String nuevaPublicacion(String titulo, MiembroEnGrupo miembroEnGrupo, LocalDate fechaPublicacion, Tipo tipo, Idioma idioma, Lugar lugar, List<PalabraClave> palabrasClaves, String enlace, String resumen){
         if((titulo != null) && (!titulo.isBlank()) 
             && (miembroEnGrupo != null) && (miembroEnGrupo.verAutor() != null) && (miembroEnGrupo.verAutor().verDni() != 0) 
             && (miembroEnGrupo.verAutor().verApellidos() != null) && (!miembroEnGrupo.verAutor().verApellidos().isBlank())
@@ -65,7 +66,7 @@ public class GestorPublicaciones implements IGestorPublicaciones{
     }
 
     @Override
-    public String modificarPublicacion(Publicacion publicacion, MiembroEnGrupo miembroEnGrupo, LocalDate fechaPublicacion, Tipo tipo, Idioma idioma, Lugar lugar, ArrayList<PalabraClave> palabrasClaves, String enlace, String resumen) {
+    public String modificarPublicacion(Publicacion publicacion, MiembroEnGrupo miembroEnGrupo, LocalDate fechaPublicacion, Tipo tipo, Idioma idioma, Lugar lugar, List<PalabraClave> palabrasClaves, String enlace, String resumen) {
         if(publicaciones.contains(publicacion)){
                 if((miembroEnGrupo != null) && (miembroEnGrupo.verAutor() != null) && (miembroEnGrupo.verAutor().verDni() != 0) 
                     && (miembroEnGrupo.verAutor().verApellidos() != null) && (!miembroEnGrupo.verAutor().verApellidos().isBlank())
@@ -90,7 +91,7 @@ public class GestorPublicaciones implements IGestorPublicaciones{
                         publicaciones.get(index).asignarTipo(tipo);
                         publicaciones.get(index).asignarIdioma(idioma);
                         publicaciones.get(index).asignarLugar(lugar);
-                        publicaciones.get(index).asignarPalabras(palabrasClaves);
+                        publicaciones.get(index).asignarPalabras((ArrayList<PalabraClave>) palabrasClaves);
                         publicaciones.get(index).asignarEnlace(enlace);
                         publicaciones.get(index).asignarResumen(resumen);
                         return MSJ_MOD_OK;
