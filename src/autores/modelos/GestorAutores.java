@@ -5,9 +5,14 @@
  */
 package autores.modelos;
 
+import grupos.modelos.Grupo;
+import grupos.modelos.MiembroEnGrupo;
 import interfaces.IGestorAutores;
+import interfaces.IGestorPublicaciones;
 import java.util.ArrayList;
 import java.util.Comparator;
+import publicaciones.modelos.GestorPublicaciones;
+import publicaciones.modelos.Publicacion;
 
 /**
  *
@@ -16,6 +21,7 @@ import java.util.Comparator;
 public class GestorAutores implements IGestorAutores {
     public static GestorAutores gestor;    
     private ArrayList<Autor> autores = new ArrayList<>();
+    IGestorPublicaciones gestorPublicaciones = GestorPublicaciones.crear();
     Comparator<Autor> comparadorAutores=(Autor autorA, Autor autorB) -> autorA.verNombres().compareTo(autorB.verNombres());    
     
     
@@ -162,5 +168,76 @@ public class GestorAutores implements IGestorAutores {
         }
         else
             return autores.get(index);
+    }
+
+    @Override
+    public String borrarAutor(Autor autor) {
+        if((autor != null) && (autor.verDni() != 0) && (autor.verApellidos() != null) 
+            && (!autor.verApellidos().isBlank()) && (autor.verNombres() !=null) 
+            && (!autor.verNombres().isBlank()) ){
+            for(Publicacion p: gestorPublicaciones.verPublicaciones()) {
+                if(autor.equals(p.verMiembroEnGrupo().verAutor()))
+                    return MSJ_REP;
+            }
+            if(this.existeEsteAutor(autor)) {
+                this.autores.remove(autor);
+                return MSJ_OK_BORRAR;
+            }                
+            else
+                return MSJ_ERROR;
+        }                  
+        else 
+            return MSJ_ERROR;
+    }
+
+    @Override
+    public ArrayList<Profesor> buscarProfesores(String apellidos) {
+        ArrayList<Profesor> profesoresBuscados = new ArrayList<>();
+        if((apellidos != null) && (!apellidos.isBlank()) ){
+            for(Autor a: autores){
+                if(a instanceof Profesor) {
+                    if((a.verApellidos().equals(apellidos)) || (a.verApellidos().startsWith(apellidos))){
+                        if((!profesoresBuscados.contains(a)))
+                            profesoresBuscados.add((Profesor) a);
+                    }
+                }
+            }
+            if(profesoresBuscados != null){
+                    profesoresBuscados.sort(comparadorAutores);
+                    return profesoresBuscados;
+            }
+        }
+        return profesoresBuscados;
+    }
+
+    @Override
+    public ArrayList<Alumno> buscarAlumnos(String apellidos) {
+        ArrayList<Alumno> alumnosBuscados = new ArrayList<>();
+        if( (apellidos != null) && (!apellidos.isBlank()) ){
+            for(Autor a: autores){
+                if(a instanceof Alumno) {
+                    if((a.verApellidos().equals(apellidos)) || (a.verApellidos().startsWith(apellidos))){
+                        if((!alumnosBuscados.contains(a)))
+                            alumnosBuscados.add((Alumno) a);
+                    } 
+                }
+            }
+            if(alumnosBuscados != null){
+                alumnosBuscados.sort(comparadorAutores);
+                return alumnosBuscados;
+            }
+        }
+        return alumnosBuscados;
+    }
+
+    @Override
+    public boolean hayAutoresConEsteGrupo(Grupo grupo) {
+        for(Autor a : autores){
+            for(MiembroEnGrupo m: a.verGrupos()){
+                if(grupo.equals(m.verGrupo()))
+                    return true;   
+            }
+        }
+        return false;
     }
 }

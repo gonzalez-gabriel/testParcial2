@@ -184,4 +184,31 @@ public class GestorPublicaciones implements IGestorPublicaciones{
         else
             return null;
     }
+
+    @Override
+    public String borrarPublicacion(Publicacion publicacion) {
+        if(this.existeEstaPublicacion(publicacion)){
+            this.publicaciones.remove(publicacion);
+            return MSJ_OK_BORRAR;
+        }
+        return MSJ_MOD_SINPUBLICACION;
+    }
+
+    @Override
+    public ArrayList<Publicacion> buscarPublicaciones(String titulo) {
+        ArrayList<Publicacion> publicacionesBuscadas = new ArrayList<>();
+        if((titulo!= null) && (!titulo.isBlank())){
+            for(Publicacion p: publicaciones){
+                if((p.verTitulo().equals(titulo)) || (p.verTitulo().startsWith(titulo))){
+                    if((!publicacionesBuscadas.contains(p)))
+                        publicacionesBuscadas.add(p);
+                } 
+            }
+            if(publicacionesBuscadas != null){
+                publicacionesBuscadas.sort(comparadorPublicaciones);
+                return publicacionesBuscadas;
+            }      
+        }
+        return publicacionesBuscadas;
+    }
 }

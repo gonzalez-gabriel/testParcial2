@@ -28,9 +28,12 @@ public interface IGestorPublicaciones {
     public static final String MSJ_MOD_ERROR = "Error: publicación no modificada.";
     public static final String MSJ_MOD_BLANCO = "Modificación ingresada en blanco.";
     public static final String MSJ_MOD_SINPUBLICACION = "No existe esta publicación."; 
+    public static final String MSJ_OK_BORRAR = "Publicación borrada con éxito.";
     
     public String nuevaPublicacion(String titulo, MiembroEnGrupo miembroEnGrupo, LocalDate fechaPublicacion, Tipo tipo, Idioma idioma, Lugar lugar, List<PalabraClave> palabrasClaves, String enlace, String resumen);
     public String modificarPublicacion(Publicacion publicacion, MiembroEnGrupo miembroEnGrupo, LocalDate fechaPublicacion, Tipo tipo, Idioma idioma, Lugar lugar, List<PalabraClave> palabrasClaves, String enlace, String resumen);
+    public String borrarPublicacion(Publicacion publicacion);
+    public ArrayList<Publicacion> buscarPublicaciones(String titulo);
     public boolean hayPublicacionesConEstaPalabraClave(PalabraClave palabraClave);
     public boolean hayPublicacionesConEsteLugar(Lugar lugar);
     public boolean hayPublicacionesConEsteTipo(Tipo tipo);
