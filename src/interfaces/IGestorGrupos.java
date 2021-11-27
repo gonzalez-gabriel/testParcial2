@@ -20,9 +20,13 @@ public interface IGestorGrupos {
     public static final String MSJ_MOD_ERROR = "Error: descripción no modificada.";
     public static final String MSJ_MOD_BLANCO = "Descripción ingresada en blanco.";
     public static final String MSJ_MOD_SINGRUPO = "No existe este grupo.";
+    public static final String MSJ_OK_BORRAR = "Grupo borrado con éxito.";
+    public static final String MSJ_ERROR_BORRAR = "No se pudo borrar el grupo.";
     
     public String nuevoGrupo(String nombre, String descripcion);
+    public String borrarGrupo(Grupo grupo);
     public String modificarGrupo(Grupo grupo, String descripcion);
+    public ArrayList<Grupo> buscarGrupos(String nombre);
     public ArrayList<Grupo> verGrupos();
     public Grupo verGrupo(String nombre);
     public boolean existeEsteGrupo(Grupo grupo);

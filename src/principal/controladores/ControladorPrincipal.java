@@ -10,6 +10,7 @@ import autores.modelos.Autor;
 import autores.modelos.Cargo;
 import autores.modelos.GestorAutores;
 import grupos.modelos.GestorGrupos;
+import grupos.modelos.Grupo;
 import grupos.modelos.MiembroEnGrupo;
 import grupos.modelos.Rol;
 import idiomas.modelos.GestorIdiomas;
@@ -84,13 +85,24 @@ public class ControladorPrincipal {
     System.out.println("Intento crear grupo1 con descripcion1: " + gg1.nuevoGrupo("grupo1", "descripcion1"));
     System.out.println("Intento crear grupo1 con descripcion1 de nuevo: " + gg1.nuevoGrupo("grupo1", "descripcion1"));
     System.out.println("Intento crear grupo2 con descripcion2: " + gg1.nuevoGrupo("grupo2", "descripcion2"));
-    System.out.print("Intento ver todos los grupos: ");
+    System.out.print("Intento ver todos los grupos ordenados: ");
     gg1.mostrarGrupos(gg1.verGrupos());
     System.out.println("\nIntento ver solo a grupo 1: " + gg1.verGrupo("grupo1").verNombre() + ", " + gg1.verGrupo("grupo1").verDescripcion());
     System.out.println("Intento modificar descripcion grupo1: " + gg1.modificarGrupo(gg1.verGrupo("grupo1"), "nuevaDescripcion1"));
     System.out.println("Intento ver cambios en grupo 1: " + gg1.verGrupo("grupo1").verNombre() + ", " + gg1.verGrupo("grupo1").verDescripcion());
     System.out.println("Intento ver si existe grupo1: " + gg1.existeEsteGrupo(gg1.verGrupo("grupo1")));
     System.out.println("Intento ver si existe grupo3: " + gg1.existeEsteGrupo(gg1.verGrupo("grupo3")));
+    System.out.println("Intento crear grupo3 con descripcion3: " + gg1.nuevoGrupo("grupo3", "descripcion3"));
+    System.out.println("Intento crear Auxiliar con descripcion4: " + gg1.nuevoGrupo("Auxiliar", "descripcion4"));
+    System.out.print("Intento ver todos los grupos ordenados: ");
+    gg1.mostrarGrupos(gg1.verGrupos());
+    System.out.println("\nIntento borrar a grupo3: " + gg1.borrarGrupo(gg1.verGrupo("grupo3")));
+    System.out.print("Intento ver todos los grupos ordenados: ");
+    gg1.mostrarGrupos(gg1.verGrupos());
+    System.out.println("\nIntento buscar grupos con la letra A: ");
+    for(Grupo g: gg1.buscarGrupos("A")){
+        System.out.println(g.verNombre());
+    }
     System.out.println("\n\n");
     
     // Pruebo funcionamiento de GestorAutores
@@ -109,6 +121,7 @@ public class ControladorPrincipal {
         a.mostrar();
     };
     System.out.println("\n\n");
+    
     
     gpc1.nuevaPalabraClave("palabra1");
     gpc1.nuevaPalabraClave("palabra2");

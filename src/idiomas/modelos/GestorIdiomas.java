@@ -101,8 +101,8 @@ public class GestorIdiomas implements IGestorIdiomas{
 
     @Override
     public boolean existeEsteIdioma(Idioma idioma) {
-        for(Idioma t: this.idiomas){
-            if(t.equals(idioma))
+        for(Idioma i: this.idiomas){
+            if(i.equals(idioma))
                 return true;   
         }
         return false;

@@ -81,14 +81,49 @@ public class GestorGrupos implements IGestorGrupos{
 
     @Override
     public boolean existeEsteGrupo(Grupo grupo) {
-        if(grupos.contains(grupo))
-            return true;
-        else
-            return false;
+        for(Grupo g: this.grupos){
+            if(g.equals(grupo))
+                return true;   
+        }
+        return false;
     }
     
     public void mostrarGrupos(ArrayList<Grupo> grupos){
         for(Grupo g: grupos)
             g.mostrar();
+    }
+
+    @Override
+    public String borrarGrupo(Grupo grupo) {
+        if((grupo!=null)&&(!grupo.verNombre().isBlank())){
+            if(grupo.tieneMiembros())
+                return MSJ_ERROR_BORRAR;
+            if(this.existeEsteGrupo(grupo)) {
+                this.grupos.remove(grupo);
+                return MSJ_OK_BORRAR;
+            }                
+            else
+                return MSJ_ERROR;
+        }                  
+        else 
+            return MSJ_ERROR;
+    }
+
+    @Override
+    public ArrayList<Grupo> buscarGrupos(String nombre) {
+        ArrayList<Grupo> gruposBuscados = new ArrayList<>();
+        if((nombre!= null) && (!nombre.isBlank())){
+            for(Grupo g: grupos){
+                if((g.verNombre().equals(nombre)) || (g.verNombre().startsWith(nombre))){
+                    if((!gruposBuscados.contains(g)))
+                     gruposBuscados.add(g);
+                } 
+            }
+            if(gruposBuscados != null){
+                gruposBuscados.sort(comparadorGrupos);
+                return gruposBuscados;
+            }      
+        }
+        return gruposBuscados;
     }
 }

@@ -101,8 +101,8 @@ public class GestorLugares implements IGestorLugares {
 
     @Override
     public boolean existeEsteLugar(Lugar lugar) {
-        for(Lugar t: this.lugares){
-            if(t.equals(lugar))
+        for(Lugar l: this.lugares){
+            if(l.equals(lugar))
                 return true;
         }
         return false;
