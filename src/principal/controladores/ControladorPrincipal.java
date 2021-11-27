@@ -58,12 +58,26 @@ public class ControladorPrincipal {
     // Pruebo métodos de GestorTipos considerar que PalabrasClaves, Lugares e Idiomas son identicos.
     System.out.println("Intento crear tipo1: " + gt1.nuevoTipo("tipo1"));
     System.out.println("Intento crear tipo1 de nuevo: " + gt1.nuevoTipo("tipo1")); //repetido
-    System.out.println("Intento crear un tipo en blanco: " + gt1.nuevoTipo("")); // blanco
+    System.out.println("Intento crear un tipo en blanco: " + gt1.nuevoTipo(" ")); // blanco
     System.out.println("Intento crear tipo2: " + gt1.nuevoTipo("tipo2"));
     System.out.println("Intento ver todos los tipos: " + gt1.verTipos());
-    System.out.println("Intento ver si está tipo1: " + gt1.verTipo("tipo1"));
-    System.out.println("Intento ver si está tipo3: " + gt1.verTipo("tipo3"));
+    System.out.println("Intento ver si existe tipo1: " + gt1.existeEsteTipo(gt1.verTipo("tipo1")));
+    System.out.println("Intento ver si existe tipo3: " + gt1.existeEsteTipo(gt1.verTipo("tipo3")));
     System.out.println("Intento ver todos los tipos pero de Gestor2: " + gt2.verTipos());
+    System.out.println("Intento crear tipo tesis: " + gt1.nuevoTipo("tesis"));
+    System.out.println("Intento crear tipo informe: " + gt1.nuevoTipo("informe"));
+    System.out.println("Intento crear tipo documento: " + gt1.nuevoTipo("documento")); 
+    System.out.println("Intento ver todos los tipos ordenados: " + gt1.verTipos());
+    System.out.println("Intento borrar tipo informe: " + gt2.borrarTipo(gt1.verTipo("informe")));
+    System.out.println("Intento ver todos los tipos ordenados: " + gt1.verTipos());
+    System.out.println("Intento buscar tipos que contengan las letras ti: ");
+    for(Tipo t: gt1.buscarTipos("ti")){
+        System.out.println(t.verNombre());
+    }
+    System.out.println("Intento buscar tipos que contengan la letra t: ");
+    for(Tipo t: gt1.buscarTipos("t")){
+        System.out.println(t.verNombre());
+    }
     System.out.println("\n\n");
     
     // Pruebo funcionamiento de GestorGrupos

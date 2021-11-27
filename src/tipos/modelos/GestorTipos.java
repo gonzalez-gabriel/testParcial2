@@ -5,9 +5,12 @@
  */
 package tipos.modelos;
 
+import interfaces.IGestorPublicaciones;
 import interfaces.IGestorTipos;
 import java.util.ArrayList;
 import java.util.Comparator;
+import publicaciones.modelos.GestorPublicaciones;
+import publicaciones.modelos.Publicacion;
 
 /**
  *
@@ -16,6 +19,7 @@ import java.util.Comparator;
 public class GestorTipos implements IGestorTipos {
     private ArrayList<Tipo> tipos= new ArrayList<>();    
     public static GestorTipos gestor;
+    IGestorPublicaciones gestorPublicaciones = GestorPublicaciones.crear();
     Comparator<Tipo> comparadorTipos=(Tipo tipoA, Tipo tipoB) -> tipoA.verNombre().compareTo(tipoB.verNombre());
     
     private GestorTipos() {
@@ -57,5 +61,50 @@ public class GestorTipos implements IGestorTipos {
             return null;
         else
             return tipos.get(index);
+    }
+
+    @Override
+    public String borrarTipo(Tipo tipo) {
+        if((tipo!=null) && (!tipo.verNombre().isBlank())){
+            for(Publicacion p: gestorPublicaciones.verPublicaciones()) {
+                if(tipo.equals(p.verTipo()))
+                    return MSJ_REP;
+            }
+            if(this.existeEsteTipo(tipo)) {
+                this.tipos.remove(tipo);
+                return MSJ_OK_BORRAR;
+            }                
+            else
+                return MSJ_ERROR;
+        }                  
+        else 
+            return MSJ_ERROR;
+    }
+
+    @Override
+    public ArrayList<Tipo> buscarTipos(String nombre) {
+        ArrayList<Tipo> tiposBuscados = new ArrayList<>();
+        if((nombre!= null) && (!nombre.isBlank())){
+            for(Tipo t: tipos){
+                if((t.verNombre().equals(nombre)) || (t.verNombre().contains(nombre))){ 
+                    if((!tiposBuscados.contains(t)))
+                        tiposBuscados.add(t);
+                }
+            }
+            if(tiposBuscados != null){
+                tiposBuscados.sort(comparadorTipos);
+                return tiposBuscados;
+            }
+        }
+        return tiposBuscados; 
+    }
+
+    @Override
+    public boolean existeEsteTipo(Tipo tipo) {
+        for(Tipo t: this.tipos){
+            if(t.equals(tipo))
+                return true;
+        }
+        return false;
     }
 }

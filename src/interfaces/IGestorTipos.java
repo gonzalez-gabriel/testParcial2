@@ -16,8 +16,12 @@ public interface IGestorTipos {
     public static final String MSJ_OK = "Tipo creado con éxito.";
     public static final String MSJ_REP = "Ya existe este tipo.";
     public static final String MSJ_ERROR = "Error.";    
+    public static final String MSJ_OK_BORRAR = "Tipo borrado con éxito.";
     
     public String nuevoTipo(String nombre);
+    public String borrarTipo(Tipo tipo);
+    public ArrayList<Tipo> buscarTipos(String nombre);
     public ArrayList<Tipo> verTipos();
     public Tipo verTipo(String nombre);
+    public boolean existeEsteTipo(Tipo tipo);
 }
