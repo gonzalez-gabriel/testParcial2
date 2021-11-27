@@ -6,8 +6,11 @@
 package lugares.modelos;
 
 import interfaces.IGestorLugares;
+import interfaces.IGestorPublicaciones;
 import java.util.ArrayList;
 import java.util.Comparator;
+import publicaciones.modelos.GestorPublicaciones;
+import publicaciones.modelos.Publicacion;
 
 /**
  *
@@ -16,6 +19,7 @@ import java.util.Comparator;
 public class GestorLugares implements IGestorLugares {
     public static GestorLugares gestor;    
     private ArrayList<Lugar> lugares = new ArrayList<>();
+    IGestorPublicaciones gestorPublicaciones = GestorPublicaciones.crear();
     Comparator<Lugar> comparadorLugares = (Lugar lugarA, Lugar lugarB) -> lugarA.verNombre().compareTo(lugarB.verNombre());    
         
     private GestorLugares() {
@@ -57,5 +61,50 @@ public class GestorLugares implements IGestorLugares {
             return null;
         else
             return lugares.get(index);
+    }
+
+    @Override
+    public String borrarLugar(Lugar lugar) {
+        if((lugar!=null) && (!lugar.verNombre().isBlank())){
+            for(Publicacion p: gestorPublicaciones.verPublicaciones()) {
+                if(lugar.equals(p.verLugar()))
+                    return MSJ_REP;
+            }
+            if(this.existeEsteLugar(lugar)) {
+                this.lugares.remove(lugar);
+                return MSJ_OK_BORRAR;
+            }                
+            else
+                return MSJ_ERROR;
+        }                  
+        else 
+            return MSJ_ERROR;
+    }
+
+    @Override
+    public ArrayList<Lugar> buscarLugares(String nombre) {
+        ArrayList<Lugar> lugaresBuscados = new ArrayList<>();
+        if((nombre!= null) && (!nombre.isBlank())){
+            for(Lugar l: lugares){
+                if((l.verNombre().equals(nombre)) || (l.verNombre().startsWith(nombre))){
+                    if((!lugaresBuscados.contains(l)))
+                        lugaresBuscados.add(l);
+                } 
+            }
+            if(lugaresBuscados != null){
+                lugaresBuscados.sort(comparadorLugares);
+                return lugaresBuscados;
+            }      
+        }
+        return lugaresBuscados;
+    }
+
+    @Override
+    public boolean existeEsteLugar(Lugar lugar) {
+        for(Lugar t: this.lugares){
+            if(t.equals(lugar))
+                return true;
+        }
+        return false;
     }
 }

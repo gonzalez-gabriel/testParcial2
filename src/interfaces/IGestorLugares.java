@@ -15,9 +15,13 @@ import lugares.modelos.Lugar;
 public interface IGestorLugares {
     public static final String MSJ_OK = "Lugar creado con éxito.";
     public static final String MSJ_REP = "Ya existe este lugar.";
-    public static final String MSJ_ERROR = "Error.";    
+    public static final String MSJ_ERROR = "Error.";   
+    public static final String MSJ_OK_BORRAR = "Lugar borrado con éxito.";
     
     public String nuevoLugar(String nombre);
+    public String borrarLugar(Lugar lugar);
+    public ArrayList<Lugar> buscarLugares(String nombre);
     public ArrayList<Lugar> verLugares();
     public Lugar verLugar(String nombre);
+    public boolean existeEsteLugar(Lugar lugar);
 }
