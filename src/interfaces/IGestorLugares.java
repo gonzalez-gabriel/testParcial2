@@ -17,6 +17,10 @@ public interface IGestorLugares {
     public static final String MSJ_REP = "Ya existe este lugar.";
     public static final String MSJ_ERROR = "Error.";   
     public static final String MSJ_OK_BORRAR = "Lugar borrado con éxito.";
+    public static final String MSJ_OK_ARCHIVO = "Archivo guardado con éxito.";
+    public static final String MSJ_ERROR_ARCHIVO = "No se pudo guardar el archivo.";
+    public static final String MSJ_OK_LECTURA = "Archivo recuperado con éxito.";
+    public static final String MSJ_ERROR_LECTURA = "No se pudo leer el archivo.";
     
     public String nuevoLugar(String nombre);
     public String borrarLugar(Lugar lugar);

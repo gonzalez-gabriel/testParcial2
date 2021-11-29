@@ -5,23 +5,23 @@
  */
 package lugares.vistas;
 
+import interfaces.IControladorALugar;
 import java.awt.Dialog;
 import java.util.ArrayList;
+import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JTextField;
 import lugares.modelos.Lugar;
 
 public class VentanaALugar extends JDialog {
     ArrayList<Lugar> lugares = new ArrayList<>();
-   
-    /**
-     * Constructor 
-     * @param ventanaPadre ventana padre 
-     */        
-    public VentanaALugar(Dialog ventanaPadre) {
-        super(ventanaPadre, true);
+    private IControladorALugar controlador;
+     
+    public VentanaALugar(IControladorALugar controlador, Dialog ventanaPadre, boolean modal) {
+        super(ventanaPadre, modal);
+        this.controlador = controlador;
         initComponents();
-    }
-    
+    }    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -33,8 +33,9 @@ public class VentanaALugar extends JDialog {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        txtNombre = new javax.swing.JTextField();
+        txtNombreLugar = new javax.swing.JTextField();
         btnGuardar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Lugares");
@@ -42,7 +43,12 @@ public class VentanaALugar extends JDialog {
 
         jLabel1.setText("Nombre:");
 
-        txtNombre.setToolTipText("Nombre del nivel");
+        txtNombreLugar.setToolTipText("Nombre del nivel");
+        txtNombreLugar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNombreLugarPresionarTecla(evt);
+            }
+        });
 
         btnGuardar.setMnemonic('G');
         btnGuardar.setText("Guardar");
@@ -53,21 +59,30 @@ public class VentanaALugar extends JDialog {
             }
         });
 
+        btnCancelar.setMnemonic('C');
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarClic(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(43, 43, 43)
-                        .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 308, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnGuardar)))
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNombreLugar)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(272, Short.MAX_VALUE)
+                .addComponent(btnGuardar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnCancelar)
+                .addGap(8, 8, 8))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -75,27 +90,45 @@ public class VentanaALugar extends JDialog {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
-                .addComponent(btnGuardar)
-                .addContainerGap())
+                    .addComponent(txtNombreLugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnGuardar)
+                    .addComponent(btnCancelar))
+                .addGap(12, 12, 12))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarClic(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarClic
-        String nombre = this.txtNombre.getText().trim();
-        Lugar lugar = new Lugar(nombre);
-        this.lugares.add(lugar);
-        for(Lugar l : this.lugares)
-            System.out.println(l);
+        this.controlador.btnGuardarClic(evt);
     }//GEN-LAST:event_btnGuardarClic
 
+    private void btnCancelarClic(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarClic
+        this.controlador.btnCancelarClic(evt);        
+    }//GEN-LAST:event_btnCancelarClic
 
+    private void txtNombreLugarPresionarTecla(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreLugarPresionarTecla
+        this.controlador.txtNombrePresionarTecla(evt);        
+    }//GEN-LAST:event_txtNombreLugarPresionarTecla
+
+    public JButton verBtnCancelar(){
+        return btnCancelar;
+    }
+    
+    public JButton verBtnGuardar(){
+        return btnGuardar;
+    }
+
+    public JTextField verTxtNombreLugar(){
+        return txtNombreLugar;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtNombreLugar;
     // End of variables declaration//GEN-END:variables
 }

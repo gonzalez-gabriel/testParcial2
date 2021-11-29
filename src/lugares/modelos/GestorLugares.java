@@ -7,6 +7,12 @@ package lugares.modelos;
 
 import interfaces.IGestorLugares;
 import interfaces.IGestorPublicaciones;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import publicaciones.modelos.GestorPublicaciones;
@@ -21,8 +27,12 @@ public class GestorLugares implements IGestorLugares {
     private ArrayList<Lugar> lugares = new ArrayList<>();
     IGestorPublicaciones gestorPublicaciones = GestorPublicaciones.crear();
     Comparator<Lugar> comparadorLugares = (Lugar lugarA, Lugar lugarB) -> lugarA.verNombre().compareTo(lugarB.verNombre());    
-        
+    
+    // constantes para manejo de archivo
+    public static final String NOMBRE_ARCHIVO = "C:\\Users\\Otros\\Documents\\NetBeansProjects\\TrabajosGraduacion2021G11\\src\\archivos\\lugares.txt";
+    
     private GestorLugares() {
+        String resultado = this.leerArchivo();
     }
     
     public static GestorLugares crear(){
@@ -32,13 +42,75 @@ public class GestorLugares implements IGestorLugares {
         return gestor;
     }
     
+    // Abrir archivo
+    private File obtenerArchivo(){
+        File file = new File(NOMBRE_ARCHIVO);
+        try{
+            if(!file.exists())
+                file.createNewFile();
+            
+            return file;
+        }
+        catch(IOException e){
+            return null;
+        }
+    }
+    
+    // Modificar/guardar archivo
+    private String escribirArchivo(){
+        File file = this.obtenerArchivo();
+        if(file != null){
+            try(BufferedWriter bw = new BufferedWriter(new FileWriter(file))){
+                ArrayList<Lugar> lugaresAGuardar = new ArrayList<>();
+                lugaresAGuardar.addAll(this.verLugares());
+                for(Lugar l: lugaresAGuardar){
+                    String cadena = l.verNombre();
+                    bw.write(cadena);
+                    bw.newLine();
+                }
+                return MSJ_OK_ARCHIVO;
+            }
+            catch(IOException e){
+                return MSJ_ERROR_ARCHIVO;
+            }
+        }
+        else
+            return MSJ_ERROR_ARCHIVO;
+    }
+    
+    // Leer Archivo
+    private String leerArchivo() {
+        File file = this.obtenerArchivo();
+        if(file != null) {
+            try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+                String cadena;
+                while((cadena = br.readLine()) != null) {
+                    String nombreLugar = cadena;
+                    Lugar lugarLeido = new Lugar (nombreLugar);
+                    this.lugares.add(lugarLeido);
+                }
+                return MSJ_OK_LECTURA;
+            }
+            catch(NullPointerException | IOException ioe) {
+                return MSJ_ERROR_LECTURA;
+            }            
+        }
+        else
+            return MSJ_ERROR_LECTURA;        
+    }
+    
     @Override
     public String nuevoLugar(String nombre) {
         if((nombre!= null) && (!nombre.isBlank())){
             Lugar lugarNuevo = new Lugar(nombre);              
             if(!this.lugares.contains(lugarNuevo)) {
                 this.lugares.add(lugarNuevo);
-                return MSJ_OK;
+                String mensaje = this.escribirArchivo();
+                
+                if(mensaje.equals(MSJ_OK_ARCHIVO))
+                    return MSJ_OK;
+                else
+                    return MSJ_ERROR;
             }
             else 
                 return MSJ_REP;
@@ -72,7 +144,12 @@ public class GestorLugares implements IGestorLugares {
             }
             if(this.existeEsteLugar(lugar)) {
                 this.lugares.remove(lugar);
-                return MSJ_OK_BORRAR;
+                String mensaje = this.escribirArchivo();
+                
+                if(mensaje.equals(MSJ_OK_ARCHIVO))
+                    return MSJ_OK_BORRAR;
+                else
+                    return MSJ_ERROR;
             }                
             else
                 return MSJ_ERROR;

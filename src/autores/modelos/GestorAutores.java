@@ -8,11 +8,8 @@ package autores.modelos;
 import grupos.modelos.Grupo;
 import grupos.modelos.MiembroEnGrupo;
 import interfaces.IGestorAutores;
-import interfaces.IGestorPublicaciones;
 import java.util.ArrayList;
 import java.util.Comparator;
-import publicaciones.modelos.GestorPublicaciones;
-import publicaciones.modelos.Publicacion;
 
 /**
  *
@@ -21,8 +18,7 @@ import publicaciones.modelos.Publicacion;
 public class GestorAutores implements IGestorAutores {
     public static GestorAutores gestor;    
     private ArrayList<Autor> autores = new ArrayList<>();
-    IGestorPublicaciones gestorPublicaciones = GestorPublicaciones.crear();
-    Comparator<Autor> comparadorAutores=(Autor autorA, Autor autorB) -> autorA.verNombres().compareTo(autorB.verNombres());    
+    Comparator<Autor> comparadorAutores=(autorA, autorB) -> autorA.verNombres().compareTo(autorB.verNombres());    
     
     
     private GestorAutores() {
@@ -37,32 +33,48 @@ public class GestorAutores implements IGestorAutores {
 
     @Override
     public String nuevoAutor(int dni, String apellidos, String nombres, Cargo cargo, String clave, String claveRepetida) {
-        if((dni!= 0) && (apellidos != null) && (!apellidos.isBlank()) && (nombres !=null) && (!nombres.isBlank()) && (cargo!=null) ){
+        if((dni>0) && (apellidos != null) && (!apellidos.isBlank()) && (nombres !=null) && (!nombres.isBlank()) && (cargo!=null) 
+                && (clave!=null) && (!clave.isBlank()) && (clave.equals(claveRepetida))){
             Autor autorNuevo= new Profesor(dni,apellidos,nombres,clave,cargo);              
             if(!this.autores.contains(autorNuevo)){
                 this.autores.add(autorNuevo);
-                return MSJ_OK;
+                return EXITO_P;
             }
             else
                 return MSJ_REP;
         }
-        else 
-            return MSJ_ERROR;
+        if(dni<=0) 
+            return ERROR_DNI_P;
+        if((apellidos == null)||(apellidos.isBlank()))
+            return ERROR_APELLIDOS_P;
+        if((nombres == null)||(nombres.isBlank()))    
+            return ERROR_NOMBRES_P;
+        if((clave==null)||(clave.isBlank())||(!clave.equals(claveRepetida)))
+            return ERROR_CLAVES; 
+        return "Error";
     }
 
     @Override
     public String nuevoAutor(int dni, String apellidos, String nombres, String cx, String clave, String claveRepetida) {
-        if((dni!= 0) && (apellidos != null) && (!apellidos.isBlank()) && (nombres !=null) && (!nombres.isBlank()) && (cx!=null) && (!cx.isBlank()) ){
+        if((dni>0) && (apellidos != null) && (!apellidos.isBlank()) && (nombres !=null) && (!nombres.isBlank()) 
+                && (cx!=null) && (!cx.isBlank()) && (clave!=null) && (clave.equals(claveRepetida))){
             Autor autorNuevo= new Alumno(dni,apellidos,nombres,clave,cx);              
             if(!this.autores.contains(autorNuevo)){
                 this.autores.add(autorNuevo);
-                return MSJ_OK;
+                return EXITO_A;
             }
             else
                 return MSJ_REP;
         }
-        else 
-            return MSJ_ERROR;
+        if(dni<=0) 
+            return ERROR_DNI_A;
+        if((apellidos == null)||(apellidos.isBlank()))
+            return ERROR_APELLIDOS_A;
+        if((nombres == null)||(nombres.isBlank()))    
+            return ERROR_NOMBRES_A;
+        if((clave==null)||(clave.isBlank())||(!clave.equals(claveRepetida)))
+            return ERROR_CLAVES; 
+        return "Error";
     }
 
     @Override
@@ -172,16 +184,11 @@ public class GestorAutores implements IGestorAutores {
 
     @Override
     public String borrarAutor(Autor autor) {
-        if((autor != null) && (autor.verDni() != 0) && (autor.verApellidos() != null) 
-            && (!autor.verApellidos().isBlank()) && (autor.verNombres() !=null) 
-            && (!autor.verNombres().isBlank()) ){
-            for(Publicacion p: gestorPublicaciones.verPublicaciones()) {
-                if(autor.equals(p.verMiembroEnGrupo().verAutor()))
-                    return MSJ_REP;
-            }
+        if( (autor != null) && (autor.verDni() != 0) && (autor.verApellidos() != null) && (!autor.verApellidos().isBlank())
+            && (autor.verNombres() !=null) && (!autor.verNombres().isBlank())  ){
             if(this.existeEsteAutor(autor)) {
                 this.autores.remove(autor);
-                return MSJ_OK_BORRAR;
+                return MSJ_OK;
             }                
             else
                 return MSJ_ERROR;
@@ -199,12 +206,12 @@ public class GestorAutores implements IGestorAutores {
                     if((a.verApellidos().equals(apellidos)) || (a.verApellidos().startsWith(apellidos))){
                         if((!profesoresBuscados.contains(a)))
                             profesoresBuscados.add((Profesor) a);
-                    }
+                    } 
                 }
             }
             if(profesoresBuscados != null){
-                    profesoresBuscados.sort(comparadorAutores);
-                    return profesoresBuscados;
+                profesoresBuscados.sort(comparadorAutores);
+                return profesoresBuscados;
             }
         }
         return profesoresBuscados;
@@ -236,7 +243,7 @@ public class GestorAutores implements IGestorAutores {
             for(MiembroEnGrupo m: a.verGrupos()){
                 if(grupo.equals(m.verGrupo()))
                     return true;   
-            }
+                }
         }
         return false;
     }
