@@ -29,7 +29,8 @@ public class GestorLugares implements IGestorLugares {
     Comparator<Lugar> comparadorLugares = (Lugar lugarA, Lugar lugarB) -> lugarA.verNombre().compareTo(lugarB.verNombre());    
     
     // constantes para manejo de archivo
-    public static final String NOMBRE_ARCHIVO = "C:\\Users\\Otros\\Documents\\NetBeansProjects\\TrabajosGraduacion2021G11\\src\\archivos\\lugares.txt";
+    public static final String NOMBRE_ARCHIVO = "lugares.txt";
+    //public static final String NOMBRE_ARCHIVO = "C:\\Users\\Otros\\Documents\\NetBeansProjects\\TrabajosGraduacion2021G11\\src\\archivos\\lugares.txt";
     
     private GestorLugares() {
         String resultado = this.leerArchivo();
