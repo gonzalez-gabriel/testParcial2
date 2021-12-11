@@ -6,15 +6,19 @@
 package principal.controladores;
 
 import autores.controladores.ControladorAutores;
+import grupos.controladores.ControladorGrupos;
 import interfaces.IControladorAutores;
+import interfaces.IControladorGrupos;
 import interfaces.IControladorLugares;
 import interfaces.IControladorPrincipal;
 import static interfaces.IControladorPrincipal.CONFIRMACION;
 import static interfaces.IControladorPrincipal.TITULO;
+import interfaces.IControladorPublicaciones;
 import java.awt.event.ActionEvent;
 import javax.swing.JOptionPane;
 import lugares.controladores.ControladorLugares;
 import principal.vistas.VentanaPrincipal;
+import publicaciones.controladores.ControladorPublicaciones;
 
 
 
@@ -52,5 +56,15 @@ public class ControladorPrincipal implements IControladorPrincipal {
     @Override
     public void btnLugaresClic(ActionEvent evt) {
         IControladorLugares cl = new ControladorLugares(this.ventana);
+    }
+
+    @Override
+    public void btnPublicacionesClic(ActionEvent evt) {
+        IControladorPublicaciones cp = new ControladorPublicaciones(this.ventana);
+    }
+
+    @Override
+    public void btnGruposClic(ActionEvent evt) {
+        IControladorGrupos cg = new ControladorGrupos(this.ventana);
     }
 }

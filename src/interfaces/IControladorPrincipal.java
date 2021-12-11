@@ -18,4 +18,6 @@ public interface IControladorPrincipal {
     public void btnLugaresClic(ActionEvent evt);
     public void btnAutoresClic(ActionEvent evt);
     public void btnSalirClic(ActionEvent evt);
+    public void btnPublicacionesClic(ActionEvent evt);
+    public void btnGruposClic(ActionEvent evt);
 }

@@ -50,6 +50,7 @@ public class ControladorAMAlumno implements IControladorAMAlumno{
         this.ventana.verPassClave().setText(clave);
         this.ventana.verPassClaveRepetida().setText(clave);
         this.ventana.verTxtDNI().setEnabled(false);
+        this.ventana.verTxtCX().setEnabled(false);
         this.ventana.verTxtApellidos().requestFocus(); 
         this.ventana.setLocationRelativeTo(null);
         this.ventana.setVisible(true);        

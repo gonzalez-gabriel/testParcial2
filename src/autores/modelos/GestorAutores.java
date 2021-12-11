@@ -247,4 +247,14 @@ public class GestorAutores implements IGestorAutores {
         }
         return false;
     }
+
+    @Override
+    public String quitarGrupos(Autor autor, ArrayList<MiembroEnGrupo> grupos) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String agregarGrupos(Autor autor, ArrayList<MiembroEnGrupo> grupos) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
