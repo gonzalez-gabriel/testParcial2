@@ -7,16 +7,17 @@ package autores.controladores;
 
 import autores.modelos.Alumno;
 import autores.modelos.GestorAutores;
+import autores.modelos.ModeloTablaAutorGrupos;
 import autores.vistas.VentanaAMAlumno;
 import autores.vistas.VentanaAMAutores;
 import interfaces.IControladorAMAlumno;
-import static interfaces.IControladorPrincipal.CONFIRMACION;
 import interfaces.IGestorAutores;
 import static interfaces.IGestorAutores.ERROR_DNI_A;
 import static interfaces.IGestorAutores.EXITO_A;
 import static interfaces.IGestorAutores.MSJ_MOD_OK;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -139,5 +140,15 @@ public class ControladorAMAlumno implements IControladorAMAlumno{
         char c = evt.getKeyChar();
             if(c == KeyEvent.VK_ENTER)
                 this.guardar();
+    }
+
+    @Override
+    public void ventanaObtenerFoco(WindowEvent evt) {
+        if(this.ventana.verTxtDNI().isEnabled())
+            this.ventana.verTxtDNI().requestFocus(true);
+        else {
+            ModeloTablaAutorGrupos mtag = (ModeloTablaAutorGrupos) this.ventana.verTablaGrupos().getModel();
+            mtag.actualizar();
+        }
     }
 }

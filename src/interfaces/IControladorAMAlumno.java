@@ -7,6 +7,7 @@ package interfaces;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowEvent;
 
 /**
  *
@@ -15,6 +16,7 @@ import java.awt.event.KeyEvent;
 public interface IControladorAMAlumno {
     public static final String TITULO_NUEVO = "Nuevo alumno";
     public static final String TITULO_MODIFICAR = "Modificar alumno";
+    public static final String CONFIRMACION = "¿Desea borrar los grupos especificados?";
     
     public void btnGuardarClic(ActionEvent evt);
     public void btnCancelarClic(ActionEvent evt);
@@ -24,4 +26,5 @@ public interface IControladorAMAlumno {
     public void txtCXPresionarTecla(KeyEvent evt);
     public void passClavePresionarTecla(KeyEvent evt);
     public void passRepetirClavePresionarTecla(KeyEvent evt);
+    public void ventanaObtenerFoco(WindowEvent evt);
 }

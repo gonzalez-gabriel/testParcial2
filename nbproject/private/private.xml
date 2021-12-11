@@ -3,27 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Otros/Documents/NetBeansProjects/TrabajosGraduacion2021G11/src/interfaces/IGestorGrupos.java</file>
-            <file>file:/C:/Users/Otros/Documents/NetBeansProjects/TrabajosGraduacion2021G11/src/principal/vistas/VentanaPrincipal.java</file>
-            <file>file:/C:/Users/Otros/Documents/NetBeansProjects/TrabajosGraduacion2021G11/src/lugares/modelos/Lugar.java</file>
             <file>file:/C:/Users/Otros/Documents/NetBeansProjects/TrabajosGraduacion2021G11/src/autores/vistas/VentanaAMAutores.java</file>
-            <file>file:/C:/Users/Otros/Documents/NetBeansProjects/TrabajosGraduacion2021G11/src/interfaces/IControladorALugar.java</file>
-            <file>file:/C:/Users/Otros/Documents/NetBeansProjects/TrabajosGraduacion2021G11/src/interfaces/IControladorAMAlumno.java</file>
-            <file>file:/C:/Users/Otros/Documents/NetBeansProjects/TrabajosGraduacion2021G11/src/autores/modelos/ModeloTablaProfesores.java</file>
-            <file>file:/C:/Users/Otros/Documents/NetBeansProjects/TrabajosGraduacion2021G11/src/principal/controladores/ControladorPrincipal.java</file>
-            <file>file:/C:/Users/Otros/Documents/NetBeansProjects/TrabajosGraduacion2021G11/src/autores/controladores/ControladorAMAlumno.java</file>
-            <file>file:/C:/Users/Otros/Documents/NetBeansProjects/TrabajosGraduacion2021G11/src/autores/modelos/ModeloTablaAlumnos.java</file>
-            <file>file:/C:/Users/Otros/Documents/NetBeansProjects/TrabajosGraduacion2021G11/src/autores/modelos/GestorAutores.java</file>
-            <file>file:/C:/Users/Otros/Documents/NetBeansProjects/TrabajosGraduacion2021G11/src/palabrasclaves/vistas/VentanaAPalabraClave.java</file>
-            <file>file:/C:/Users/Otros/Documents/NetBeansProjects/TrabajosGraduacion2021G11/src/interfaces/IControladorPrincipal.java</file>
-            <file>file:/C:/Users/Otros/Documents/NetBeansProjects/TrabajosGraduacion2021G11/src/interfaces/IControladorAMProfesor.java</file>
             <file>file:/C:/Users/Otros/Documents/NetBeansProjects/TrabajosGraduacion2021G11/src/autores/vistas/VentanaAMProfesor.java</file>
-            <file>file:/C:/Users/Otros/Documents/NetBeansProjects/TrabajosGraduacion2021G11/src/interfaces/IGestorLugares.java</file>
-            <file>file:/C:/Users/Otros/Documents/NetBeansProjects/TrabajosGraduacion2021G11/src/interfaces/IGestorIdiomas.java</file>
-            <file>file:/C:/Users/Otros/Documents/NetBeansProjects/TrabajosGraduacion2021G11/src/interfaces/IControladorAutores.java</file>
-            <file>file:/C:/Users/Otros/Documents/NetBeansProjects/TrabajosGraduacion2021G11/src/interfaces/IGestorAutores.java</file>
             <file>file:/C:/Users/Otros/Documents/NetBeansProjects/TrabajosGraduacion2021G11/src/autores/controladores/ControladorAMProfesor.java</file>
-            <file>file:/C:/Users/Otros/Documents/NetBeansProjects/TrabajosGraduacion2021G11/src/autores/vistas/VentanaAMAlumno.java</file>
             <file>file:/C:/Users/Otros/Documents/NetBeansProjects/TrabajosGraduacion2021G11/src/autores/controladores/ControladorAutores.java</file>
         </group>
     </open-files>

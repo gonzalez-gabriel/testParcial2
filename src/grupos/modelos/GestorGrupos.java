@@ -126,4 +126,41 @@ public class GestorGrupos implements IGestorGrupos{
         }
         return gruposBuscados;
     }
+
+    @Override
+    public String agregarMiembros(Grupo grupo, ArrayList<MiembroEnGrupo> miembros) {
+        if(this.existeEsteGrupo(grupo)) {
+            if((miembros!=null) && (!miembros.isEmpty()) ) {
+                for(MiembroEnGrupo m: miembros){
+                    if(!grupo.verMiembros().contains(m))
+                        grupo.agregarMiembro(m.verAutor(), m.verRol());
+                }
+                return EXITO_MIEMBROS;
+            }
+            else
+                return MIEMBROS_INEXISTENTES;
+        }
+        return GRUPO_INEXISTENTE;
+    }
+
+    @Override
+    public String quitarMiembros(Grupo grupo, ArrayList<MiembroEnGrupo> miembros) {
+        if (this.existeEsteGrupo(grupo)) {
+            if((miembros!=null) && (!miembros.isEmpty()) ) {
+                for(MiembroEnGrupo m: miembros){
+                    if(grupo.verMiembros().contains(m))
+                        grupo.quitarMiembro(m.verAutor());
+                }
+                return EXITO_MIEMBROS;
+            }
+            else
+                return MIEMBROS_INEXISTENTES;
+        }
+        return GRUPO_INEXISTENTE;
+    }
+
+    @Override
+    public String actualizarGrupos() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates
+    }
 }

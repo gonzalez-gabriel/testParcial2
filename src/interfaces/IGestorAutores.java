@@ -10,6 +10,7 @@ import autores.modelos.Autor;
 import autores.modelos.Cargo;
 import autores.modelos.Profesor;
 import grupos.modelos.Grupo;
+import grupos.modelos.MiembroEnGrupo;
 import java.util.ArrayList;
 
 /**
@@ -52,5 +53,6 @@ public interface IGestorAutores {
     public ArrayList<Profesor> buscarProfesores(String apellidos);
     public ArrayList<Alumno> buscarAlumnos(String apellidos);
     public boolean hayAutoresConEsteGrupo(Grupo grupo);
-    
+    public String quitarGrupos(Autor autor, ArrayList<MiembroEnGrupo> grupos);
+    public String agregarGrupos(Autor autor, ArrayList<MiembroEnGrupo> grupos);    
 }

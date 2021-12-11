@@ -7,6 +7,7 @@ package autores.controladores;
 
 import autores.modelos.Cargo;
 import autores.modelos.GestorAutores;
+import autores.modelos.ModeloTablaAutorGrupos;
 import autores.modelos.Profesor;
 import autores.vistas.VentanaAMAutores;
 import autores.vistas.VentanaAMProfesor;
@@ -18,6 +19,7 @@ import static interfaces.IGestorAutores.EXITO_P;
 import static interfaces.IGestorAutores.MSJ_MOD_OK;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -143,5 +145,14 @@ public class ControladorAMProfesor implements IControladorAMProfesor {
             if(c == KeyEvent.VK_ENTER)
                 this.guardar();
     }
-    
+
+    @Override
+    public void ventanaObtenerFoco(WindowEvent evt) {
+        if(this.ventana.verTxtDNI().isEnabled())
+            this.ventana.verTxtDNI().requestFocus(true);
+        else {
+            ModeloTablaAutorGrupos mtag =(ModeloTablaAutorGrupos) this.ventana.verTablaGrupos().getModel();
+            mtag.actualizar();
+        }
+    }
 }

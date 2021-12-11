@@ -6,6 +6,7 @@
 package interfaces;
 
 import grupos.modelos.Grupo;
+import grupos.modelos.MiembroEnGrupo;
 import java.util.ArrayList;
 
 /**
@@ -23,6 +24,10 @@ public interface IGestorGrupos {
     public static final String MSJ_OK_BORRAR = "Grupo borrado con éxito.";
     public static final String MSJ_ERROR_BORRAR = "No se pudo borrar el grupo.";
     
+    public static final String EXITO_MIEMBROS = "Miembros agregados/quitados con éxito.";
+    public static final String MIEMBROS_INEXISTENTES = "No se especificaron miembros a agregar/quitar";
+    public static final String GRUPO_INEXISTENTE = "No existe el grupo especificado";
+    
     public String nuevoGrupo(String nombre, String descripcion);
     public String borrarGrupo(Grupo grupo);
     public String modificarGrupo(Grupo grupo, String descripcion);
@@ -30,4 +35,7 @@ public interface IGestorGrupos {
     public ArrayList<Grupo> verGrupos();
     public Grupo verGrupo(String nombre);
     public boolean existeEsteGrupo(Grupo grupo);
+    public String agregarMiembros(Grupo grupo, ArrayList<MiembroEnGrupo> miembros);
+    public String quitarMiembros(Grupo grupo, ArrayList<MiembroEnGrupo> miembros);
+    public String actualizarGrupos();
 }
