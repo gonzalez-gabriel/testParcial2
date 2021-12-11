@@ -10,13 +10,21 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import principal.vistas.VentanaPrincipal;
+import publicaciones.modelos.GestorPublicaciones;
+import publicaciones.vistas.VentanaPublicaciones;
 
 /**
  *
  * @author Ocón Santiago Luis
  */
 public class ControladorPublicaciones implements IControladorPublicaciones{
+    private VentanaPublicaciones ventana;
+    private GestorPublicaciones gp = GestorPublicaciones.crear();
+    
     public ControladorPublicaciones(VentanaPrincipal ventanaPadre) {
+        this.ventana = new VentanaPublicaciones(this,ventanaPadre,true);
+        this.ventana.setLocationRelativeTo(null);
+        this.ventana.setVisible(true);
     }
     
     @Override

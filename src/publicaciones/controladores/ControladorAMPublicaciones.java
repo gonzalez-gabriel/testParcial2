@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package interfaces;
+package publicaciones.controladores;
 
 /**
  *
  * @author Ocón Santiago Luis
  */
-public interface IControladorIdiomas {
+public class ControladorAMPublicaciones {
     
 }

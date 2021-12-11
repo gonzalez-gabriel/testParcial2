@@ -27,7 +27,7 @@
               <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jButton1" alignment="0" min="-2" pref="162" max="-2" attributes="0"/>
-                  <Component id="jButton5" alignment="0" min="-2" pref="162" max="-2" attributes="0"/>
+                  <Component id="btnGrupos" alignment="0" min="-2" pref="162" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -36,7 +36,7 @@
               </Group>
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jButton7" alignment="0" min="-2" pref="162" max="-2" attributes="0"/>
+                  <Component id="btnPublicaciones" alignment="0" min="-2" pref="162" max="-2" attributes="0"/>
                   <Component id="jButton3" alignment="0" min="-2" pref="162" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
@@ -62,9 +62,9 @@
               </Group>
               <EmptySpace pref="40" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButton5" alignment="3" min="-2" pref="96" max="-2" attributes="0"/>
+                  <Component id="btnGrupos" alignment="3" min="-2" pref="96" max="-2" attributes="0"/>
                   <Component id="jButton6" alignment="3" min="-2" pref="96" max="-2" attributes="0"/>
-                  <Component id="jButton7" alignment="3" min="-2" pref="96" max="-2" attributes="0"/>
+                  <Component id="btnPublicaciones" alignment="3" min="-2" pref="96" max="-2" attributes="0"/>
                   <Component id="jButton8" alignment="3" min="-2" pref="96" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
@@ -161,7 +161,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="verBtnTipos"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton5">
+    <Component class="javax.swing.JButton" name="btnGrupos">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -205,7 +205,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="verBtnAutores"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton7">
+    <Component class="javax.swing.JButton" name="btnPublicaciones">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>

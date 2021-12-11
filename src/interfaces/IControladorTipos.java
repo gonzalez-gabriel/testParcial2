@@ -9,6 +9,6 @@ package interfaces;
  *
  * @author Ocón Santiago Luis
  */
-public class IControladorTipos {
+public interface IControladorTipos {
     
 }

@@ -5,7 +5,9 @@
  */
 package grupos.controladores;
 
+import grupos.modelos.GestorGrupos;
 import grupos.vistas.VentanaAMGrupo;
+import grupos.vistas.VentanaGrupos;
 import interfaces.IControladorGrupos;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -17,7 +19,13 @@ import principal.vistas.VentanaPrincipal;
  * @author Ocón Santiago Luis
  */
 public class ControladorGrupos implements IControladorGrupos{
+    private VentanaGrupos ventana;
+    private GestorGrupos gg = GestorGrupos.crear();
+    
     public ControladorGrupos(VentanaPrincipal ventanaPadre) {
+        this.ventana = new VentanaGrupos(this,ventanaPadre,true);
+        this.ventana.setLocationRelativeTo(null);
+        this.ventana.setVisible(true);
     }
     
     

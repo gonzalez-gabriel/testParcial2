@@ -12,7 +12,6 @@ import autores.modelos.Profesor;
 import autores.vistas.VentanaAMAutores;
 import autores.vistas.VentanaAMProfesor;
 import interfaces.IControladorAMProfesor;
-import static interfaces.IControladorPrincipal.CONFIRMACION;
 import interfaces.IGestorAutores;
 import static interfaces.IGestorAutores.ERROR_DNI_P;
 import static interfaces.IGestorAutores.EXITO_P;
