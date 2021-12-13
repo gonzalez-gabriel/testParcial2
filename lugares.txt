@@ -1,2 +1,4 @@
-aaa
-universidad
+Centro de investigación
+Laboratorio
+Ministerio
+Universidad

@@ -3,8 +3,25 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Otros/Documents/NetBeansProjects/TrabajosGraduacion2021G11/src/autores/vistas/VentanaAMAutores.java</file>
+            <file>file:/C:/Users/Otros/Documents/NetBeansProjects/TrabajosGraduacion2021G11/src/grupos/vistas/VentanaGrupos.java</file>
+            <file>file:/C:/Users/Otros/Documents/NetBeansProjects/TrabajosGraduacion2021G11/src/interfaces/IGestorGrupos.java</file>
+            <file>file:/C:/Users/Otros/Documents/NetBeansProjects/TrabajosGraduacion2021G11/src/grupos/modelos/ModeloComboRol.java</file>
+            <file>file:/C:/Users/Otros/Documents/NetBeansProjects/TrabajosGraduacion2021G11/src/interfaces/IControladorAMGrupo.java</file>
+            <file>file:/C:/Users/Otros/Documents/NetBeansProjects/TrabajosGraduacion2021G11/src/grupos/modelos/ModeloTablaModificarMiembros.java</file>
+            <file>file:/C:/Users/Otros/Documents/NetBeansProjects/TrabajosGraduacion2021G11/src/grupos/modelos/ModeloTablaGrupos.java</file>
+            <file>file:/C:/Users/Otros/Documents/NetBeansProjects/TrabajosGraduacion2021G11/src/grupos/vistas/VentanaAMGrupo.java</file>
+            <file>file:/C:/Users/Otros/Documents/NetBeansProjects/TrabajosGraduacion2021G11/src/lugares/controladores/ControladorLugares.java</file>
+            <file>file:/C:/Users/Otros/Documents/NetBeansProjects/TrabajosGraduacion2021G11/src/autores/modelos/ModeloTablaProfesores.java</file>
+            <file>file:/C:/Users/Otros/Documents/NetBeansProjects/TrabajosGraduacion2021G11/src/grupos/controladores/ControladorModificarMiembros.java</file>
+            <file>file:/C:/Users/Otros/Documents/NetBeansProjects/TrabajosGraduacion2021G11/src/interfaces/IControladorGrupos.java</file>
+            <file>file:/C:/Users/Otros/Documents/NetBeansProjects/TrabajosGraduacion2021G11/src/grupos/modelos/Rol.java</file>
+            <file>file:/C:/Users/Otros/Documents/NetBeansProjects/TrabajosGraduacion2021G11/src/grupos/vistas/VentanaMMiembros.java</file>
+            <file>file:/C:/Users/Otros/Documents/NetBeansProjects/TrabajosGraduacion2021G11/src/grupos/modelos/ModeloTablaMiembro.java</file>
             <file>file:/C:/Users/Otros/Documents/NetBeansProjects/TrabajosGraduacion2021G11/src/autores/vistas/VentanaAMProfesor.java</file>
+            <file>file:/C:/Users/Otros/Documents/NetBeansProjects/TrabajosGraduacion2021G11/src/interfaces/IControladorModificarMiembros.java</file>
+            <file>file:/C:/Users/Otros/Documents/NetBeansProjects/TrabajosGraduacion2021G11/src/grupos/controladores/ControladorAMGrupo.java</file>
+            <file>file:/C:/Users/Otros/Documents/NetBeansProjects/TrabajosGraduacion2021G11/src/grupos/controladores/ControladorGrupos.java</file>
+            <file>file:/C:/Users/Otros/Documents/NetBeansProjects/TrabajosGraduacion2021G11/src/grupos/modelos/GestorGrupos.java</file>
             <file>file:/C:/Users/Otros/Documents/NetBeansProjects/TrabajosGraduacion2021G11/src/autores/controladores/ControladorAMProfesor.java</file>
             <file>file:/C:/Users/Otros/Documents/NetBeansProjects/TrabajosGraduacion2021G11/src/autores/controladores/ControladorAutores.java</file>
         </group>

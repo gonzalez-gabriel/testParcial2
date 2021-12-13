@@ -30,7 +30,7 @@ public class GestorGrupos implements IGestorGrupos{
     
     @Override
     public String nuevoGrupo(String nombre, String descripcion) {
-        if((nombre!= null) && (!nombre.isBlank())){
+        if((nombre!= null) && !(nombre.isBlank()) && (descripcion != null) && !(descripcion.isBlank())){
             Grupo grupoNuevo = new Grupo(nombre,descripcion);              
             if(!this.grupos.contains(grupoNuevo)) {
                 this.grupos.add(grupoNuevo);
@@ -159,6 +159,7 @@ public class GestorGrupos implements IGestorGrupos{
         return GRUPO_INEXISTENTE;
     }
 
+    // Este método se utliza en la escritura de Archivos, lo dejo sin función.
     @Override
     public String actualizarGrupos() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates

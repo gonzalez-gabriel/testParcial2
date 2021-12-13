@@ -14,7 +14,6 @@ import autores.vistas.VentanaAMAutores;
 import interfaces.IControladorAMAlumno;
 import interfaces.IControladorAMProfesor;
 import interfaces.IControladorAutores;
-import static interfaces.IControladorAutores.PROFESOR_NUEVO;
 import static interfaces.IGestorAutores.EXITO_A;
 import static interfaces.IGestorAutores.EXITO_P;
 import java.awt.event.ActionEvent;

@@ -18,7 +18,7 @@ import java.util.Comparator;
 public class GestorAutores implements IGestorAutores {
     public static GestorAutores gestor;    
     private ArrayList<Autor> autores = new ArrayList<>();
-    Comparator<Autor> comparadorAutores=(autorA, autorB) -> autorA.verNombres().compareTo(autorB.verNombres());    
+    Comparator<Autor> comparadorAutores=(autorA, autorB) -> autorA.verApellidos().compareTo(autorB.verApellidos());    
     
     
     private GestorAutores() {

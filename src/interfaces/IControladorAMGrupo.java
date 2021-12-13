@@ -18,7 +18,7 @@ public interface IControladorAMGrupo {
     public static final String TITULO_MODIFICAR = "Modificar grupo";
     
     public void btnGuardarClic(ActionEvent evt);                       
-    public void btnCancelarClic(ActionEvent evt);                        
+    public void btnCancelarClic(ActionEvent evt);     
     public void btnModificarMiembrosClic(ActionEvent evt);
     public void txtNombrePresionarTecla(KeyEvent evt); 
     public void txtDescripcionPresionarTecla(KeyEvent evt);

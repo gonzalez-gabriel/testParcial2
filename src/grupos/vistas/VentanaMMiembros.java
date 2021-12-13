@@ -5,17 +5,22 @@
  */
 package grupos.vistas;
 
+import interfaces.IControladorModificarMiembros;
+import java.awt.Dialog;
+import javax.swing.JTable;
+
 /**
  *
  * @author Ocón Santiago Luis
  */
 public class VentanaMMiembros extends javax.swing.JDialog {
-
+    private IControladorModificarMiembros controlador;
     /**
      * Creates new form VentanaMMiembros
      */
-    public VentanaMMiembros(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public VentanaMMiembros(IControladorModificarMiembros controlador, Dialog ventanaPadre, boolean modal) {
+        super(ventanaPadre, modal);
+        this.controlador = controlador;
         initComponents();
     }
 
@@ -30,7 +35,7 @@ public class VentanaMMiembros extends javax.swing.JDialog {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaModificarMiembros = new javax.swing.JTable();
         btnTodos = new javax.swing.JButton();
         btnNinguno = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
@@ -40,7 +45,7 @@ public class VentanaMMiembros extends javax.swing.JDialog {
 
         jLabel1.setText("Miembros:");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaModificarMiembros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -51,7 +56,7 @@ public class VentanaMMiembros extends javax.swing.JDialog {
                 "Nombre", "Rol"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaModificarMiembros);
 
         btnTodos.setMnemonic('T');
         btnTodos.setText("Todos");
@@ -127,61 +132,23 @@ public class VentanaMMiembros extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelarClic(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarClic
-        // TODO add your handling code here:
+        this.controlador.btnCancelarClic(evt);
     }//GEN-LAST:event_btnCancelarClic
 
     private void btnAceptarClic(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarClic
-        // TODO add your handling code here:
+        this.controlador.btnAceptarClic(evt);
     }//GEN-LAST:event_btnAceptarClic
 
     private void btnTodosClic(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTodosClic
-        // TODO add your handling code here:
+        this.controlador.btnTodosClic(evt);
     }//GEN-LAST:event_btnTodosClic
 
     private void btnNingunoClic(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNingunoClic
-        // TODO add your handling code here:
+        this.controlador.btnNingunoClic(evt);
     }//GEN-LAST:event_btnNingunoClic
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentanaMMiembros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentanaMMiembros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentanaMMiembros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentanaMMiembros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                VentanaMMiembros dialog = new VentanaMMiembros(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
+    
+    public JTable verTablaMiembrosModificar() {
+        return tablaModificarMiembros;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -191,6 +158,6 @@ public class VentanaMMiembros extends javax.swing.JDialog {
     private javax.swing.JButton btnTodos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tablaModificarMiembros;
     // End of variables declaration//GEN-END:variables
 }

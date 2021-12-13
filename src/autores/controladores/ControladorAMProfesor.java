@@ -5,17 +5,20 @@
  */
 package autores.controladores;
 
+import autores.modelos.Autor;
 import autores.modelos.Cargo;
 import autores.modelos.GestorAutores;
 import autores.modelos.ModeloTablaAutorGrupos;
 import autores.modelos.Profesor;
 import autores.vistas.VentanaAMAutores;
 import autores.vistas.VentanaAMProfesor;
+import grupos.modelos.GestorGrupos;
 import interfaces.IControladorAMProfesor;
 import interfaces.IGestorAutores;
 import static interfaces.IGestorAutores.ERROR_DNI_P;
 import static interfaces.IGestorAutores.EXITO_P;
 import static interfaces.IGestorAutores.MSJ_MOD_OK;
+import interfaces.IGestorGrupos;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
@@ -28,13 +31,25 @@ import javax.swing.JOptionPane;
 public class ControladorAMProfesor implements IControladorAMProfesor {
     private VentanaAMProfesor ventana;
     private IGestorAutores ga = GestorAutores.crear();
+    private IGestorGrupos gg = GestorGrupos.crear();
+    
+//    public ControladorAMProfesor(VentanaAMAutores ventanaPadre) { 
+//        this.ventana = new VentanaAMProfesor(this, ventanaPadre,true);
+//        this.ventana.setTitle(TITULO_NUEVO);        
+//        this.ventana.verTxtDNI().requestFocus(); 
+//        this.ventana.setLocationRelativeTo(null);
+//        this.ventana.setVisible(true); 
+//    }
     
     public ControladorAMProfesor(VentanaAMAutores ventanaPadre) { 
         this.ventana = new VentanaAMProfesor(this, ventanaPadre,true);
-        this.ventana.setTitle(TITULO_NUEVO);        
-        this.ventana.verTxtDNI().requestFocus(); 
+        this.ventana.setTitle(TITULO_NUEVO);
+        this.ventana.verTxtDNI().requestFocus();
+        this.ventana.verTablaGrupos().setModel(new ModeloTablaAutorGrupos ());
+        this.ventana.verTablaGrupos().setEnabled(false);
+        
         this.ventana.setLocationRelativeTo(null);
-        this.ventana.setVisible(true); 
+        this.ventana.setVisible(true);
     }
     
     public ControladorAMProfesor(VentanaAMAutores ventanaPadre, Profesor profesor) { 
@@ -52,7 +67,8 @@ public class ControladorAMProfesor implements IControladorAMProfesor {
         this.ventana.verPassClave().setText(clave);
         this.ventana.verPassClaveRepetida().setText(clave);
         this.ventana.verTxtDNI().setEnabled(false);
-        this.ventana.verTxtApellidos().requestFocus();     
+        this.ventana.verTxtApellidos().requestFocus(); 
+        this.ventana.verTablaGrupos().setModel(new ModeloTablaAutorGrupos((Autor) profesor)); 
         this.ventana.setLocationRelativeTo(null);
         this.ventana.setVisible(true); 
     }
@@ -150,7 +166,7 @@ public class ControladorAMProfesor implements IControladorAMProfesor {
         if(this.ventana.verTxtDNI().isEnabled())
             this.ventana.verTxtDNI().requestFocus(true);
         else {
-            ModeloTablaAutorGrupos mtag =(ModeloTablaAutorGrupos) this.ventana.verTablaGrupos().getModel();
+            ModeloTablaAutorGrupos mtag = (ModeloTablaAutorGrupos) this.ventana.verTablaGrupos().getModel();
             mtag.actualizar();
         }
     }

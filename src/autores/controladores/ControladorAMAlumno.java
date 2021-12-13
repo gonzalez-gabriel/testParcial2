@@ -6,15 +6,18 @@
 package autores.controladores;
 
 import autores.modelos.Alumno;
+import autores.modelos.Autor;
 import autores.modelos.GestorAutores;
 import autores.modelos.ModeloTablaAutorGrupos;
 import autores.vistas.VentanaAMAlumno;
 import autores.vistas.VentanaAMAutores;
+import grupos.modelos.GestorGrupos;
 import interfaces.IControladorAMAlumno;
 import interfaces.IGestorAutores;
 import static interfaces.IGestorAutores.ERROR_DNI_A;
 import static interfaces.IGestorAutores.EXITO_A;
 import static interfaces.IGestorAutores.MSJ_MOD_OK;
+import interfaces.IGestorGrupos;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
@@ -27,11 +30,15 @@ import javax.swing.JOptionPane;
 public class ControladorAMAlumno implements IControladorAMAlumno{
     private VentanaAMAlumno ventana;
     private IGestorAutores ga = GestorAutores.crear();
+    private IGestorGrupos gg = GestorGrupos.crear();
+
     
     public ControladorAMAlumno(VentanaAMAutores ventanaPadre) { 
         this.ventana = new VentanaAMAlumno(this, ventanaPadre,true);
         this.ventana.setTitle(TITULO_NUEVO);
-        this.ventana.verTxtDNI().requestFocus();  
+        this.ventana.verTxtDNI().requestFocus(); 
+        this.ventana.verTablaGrupos().setModel(new ModeloTablaAutorGrupos());
+        this.ventana.verTablaGrupos().setEnabled(false);
         this.ventana.setLocationRelativeTo(null);
         this.ventana.setVisible(true);
     }
@@ -52,6 +59,7 @@ public class ControladorAMAlumno implements IControladorAMAlumno{
         this.ventana.verTxtDNI().setEnabled(false);
         this.ventana.verTxtCX().setEnabled(false);
         this.ventana.verTxtApellidos().requestFocus(); 
+        this.ventana.verTablaGrupos().setModel(new ModeloTablaAutorGrupos((Autor) alumno)); 
         this.ventana.setLocationRelativeTo(null);
         this.ventana.setVisible(true);        
     }

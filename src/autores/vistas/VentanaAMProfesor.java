@@ -17,7 +17,6 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 
 public class VentanaAMProfesor extends JDialog {
-    ArrayList<Profesor> profesores = new ArrayList<>();
     private IControladorAMProfesor controlador;
         
     public VentanaAMProfesor(IControladorAMProfesor controlador, Dialog ventanaPadre, boolean modal) {

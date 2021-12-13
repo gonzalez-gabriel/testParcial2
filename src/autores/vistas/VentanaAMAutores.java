@@ -5,7 +5,6 @@
  */
 package autores.vistas;
 
-import autores.controladores.ControladorAutores;
 import interfaces.IControladorAutores;
 import java.awt.Frame;
 import javax.swing.JButton;
@@ -18,10 +17,7 @@ import javax.swing.JTextField;
  */
 public class VentanaAMAutores extends javax.swing.JDialog {
     private IControladorAutores controlador; 
-    /**
-     * Constructor
-     * @param ventanaPadre ventana padre
-     */
+    
     public VentanaAMAutores(IControladorAutores controlador, Frame ventanaPadre, boolean modal) {
         super(ventanaPadre, modal);
         this.controlador = controlador;

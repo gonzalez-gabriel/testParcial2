@@ -14,7 +14,8 @@ import java.awt.event.KeyEvent;
  */
 public interface IControladorAMPublicacion {
     public static final String TITULO_NUEVA = "Nueva publicación"; 
-    public static final String TITULO_MODIFICAR = "Modificar publicación"; 
+    public static final String TITULO_MODIFICAR = "Modificar publicación";
+    public static final String SALIR = "¿Desea vover a la anterior ventana?";
     
     public void btnGuardarClic(ActionEvent evt);          
     public void btnCancelarClic(ActionEvent evt);

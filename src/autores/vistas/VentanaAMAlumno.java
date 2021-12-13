@@ -15,8 +15,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
-public class VentanaAMAlumno extends JDialog {    
-    ArrayList<Alumno> alumnos = new ArrayList<>();
+public class VentanaAMAlumno extends JDialog {
     private IControladorAMAlumno controlador;
     
     /**
@@ -59,6 +58,13 @@ public class VentanaAMAlumno extends JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Alumnos");
         setResizable(false);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                ventanaObtenerFoco(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
 
         jLabel1.setText("Apellidos:");
 
@@ -249,6 +255,10 @@ public class VentanaAMAlumno extends JDialog {
     private void passRepetirClavePresionarTecla(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passRepetirClavePresionarTecla
         this.controlador.passRepetirClavePresionarTecla(evt);
     }//GEN-LAST:event_passRepetirClavePresionarTecla
+
+    private void ventanaObtenerFoco(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_ventanaObtenerFoco
+        this.controlador.ventanaObtenerFoco(evt);
+    }//GEN-LAST:event_ventanaObtenerFoco
 
     public JTextField verTxtDNI() {
         return txtDNI;

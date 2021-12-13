@@ -23,9 +23,6 @@ public class ModeloTablaAutorGrupos extends AbstractTableModel {
     private IGestorGrupos gg = GestorGrupos.crear();
     private Autor autor;
     
-    public ModeloTablaAutorGrupos () {
-    }
-    
     public ModeloTablaAutorGrupos (Autor autor) {
         this.autor = autor;
         this.nombreColumnas.add("Nombre");
@@ -35,6 +32,9 @@ public class ModeloTablaAutorGrupos extends AbstractTableModel {
             if(!this.grupos.contains(m.verGrupo()))
                 this.grupos.add(m.verGrupo());
         }
+    }
+
+    public ModeloTablaAutorGrupos() {
     }
     
     @Override
@@ -49,8 +49,7 @@ public class ModeloTablaAutorGrupos extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Grupo g = this.grupos.get(rowIndex);
-        
+        Grupo g = this.grupos.get(rowIndex);        
         switch(columnIndex) {
             case 0 : return g.verNombre();
             default: return verRol(g);
@@ -66,14 +65,12 @@ public class ModeloTablaAutorGrupos extends AbstractTableModel {
         for(MiembroEnGrupo m : this.autor.verGrupos()){
             if(m.verGrupo().equals(grupo))
                 return m.verRol();
-        }
-        
+        }        
         return null;
     }
     
     public void actualizar() {
-        this.grupos = new ArrayList<>();
-        
+        this.grupos = new ArrayList<>();        
         for(MiembroEnGrupo m : this.autor.verGrupos()){
             if(!this.grupos.contains(m.verGrupo()))
                 this.grupos.add(m.verGrupo());
